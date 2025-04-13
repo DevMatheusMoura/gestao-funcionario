@@ -1,7 +1,6 @@
 package br.com.f1rst.gestao_funcionarios.funcionarios.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
@@ -15,6 +14,8 @@ import java.util.UUID;
 @Entity
 public class Funcionarios {
     @Id
+    @GeneratedValue(strategy =  GenerationType.AUTO)
+    @Column(name = "id_funcionario", updatable = false, unique = true,nullable = false)
     private UUID idFuncionario;
     @NotBlank
     private String nomeCompleto;
@@ -28,7 +29,6 @@ public class Funcionarios {
     private String endereço;
 
     public Funcionarios(String nomeCompleto, String funcao, Double salario, String telefone, String endereço) {
-        this.idFuncionario = UUID.randomUUID();
         this.nomeCompleto = nomeCompleto;
         this.funcao = funcao;
         this.salario = salario;
