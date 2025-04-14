@@ -1,5 +1,6 @@
 package br.com.f1rst.gestao_funcionarios.funcionarios.application.api;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,5 +9,5 @@ import org.springframework.web.bind.annotation.*;
 public interface FuncionariosAPI {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    FuncionariosResponse postFuncionarios(FuncionariosRequest funcionariosRequest);
+    FuncionariosResponse postFuncionarios(@Valid @RequestBody FuncionariosRequest funcionariosRequest);
 }

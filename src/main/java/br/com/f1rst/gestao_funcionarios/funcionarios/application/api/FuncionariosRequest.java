@@ -2,19 +2,20 @@ package br.com.f1rst.gestao_funcionarios.funcionarios.application.api;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Value;
 
 @Value
 public class FuncionariosRequest {
-
-    @NotBlank
+    @NotBlank(message = "Nome completo é obrigatório")
     private String nomeCompleto;
-    @NotBlank
+    @NotBlank(message = "Função é obrigatória")
     private String funcao;
-    @NotNull
+    @NotNull(message = "Salário é obrigatório")
     private Double salario;
-    @NotBlank
+    @NotBlank(message = "Telefone é obrigatório")
+    @Size(min = 11, max = 15)
     private String telefone;
-    @NotBlank
-    private String endereço;
+    @NotBlank(message = "Endereço é obrigatório")
+    private String endereco;
 }

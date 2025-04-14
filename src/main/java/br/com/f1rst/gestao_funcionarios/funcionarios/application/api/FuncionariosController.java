@@ -1,6 +1,7 @@
 package br.com.f1rst.gestao_funcionarios.funcionarios.application.api;
 
 import br.com.f1rst.gestao_funcionarios.funcionarios.application.service.FuncionariosService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,10 +14,10 @@ public class FuncionariosController implements FuncionariosAPI {
 
 
     @Override
-    public FuncionariosResponse postFuncionarios(FuncionariosRequest funcionariosRequest) {
+    public FuncionariosResponse postFuncionarios(@Valid FuncionariosRequest funcionariosRequest) {
        log.info("[inicia] FuncionariosController - postFuncionarios");
        FuncionariosResponse funcionariosCriado = funcionariosService.criaFuncionarios(funcionariosRequest);
         log.info("[finaliza] FuncionariosController - postFuncionarios");
         return funcionariosCriado;
-
+    }
 }
