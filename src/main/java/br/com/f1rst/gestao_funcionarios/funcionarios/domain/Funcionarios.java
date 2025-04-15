@@ -1,10 +1,10 @@
 package br.com.f1rst.gestao_funcionarios.funcionarios.domain;
 
+import br.com.f1rst.gestao_funcionarios.funcionarios.application.api.FuncionariosRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -17,7 +17,7 @@ public class Funcionarios {
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
     @Column(name = "id_funcionario", updatable = false, unique = true,nullable = false)
-    private UUID idFuncionario;
+    private UUID idFuncionarios;
     @NotBlank
     private String nomeCompleto;
     @NotBlank
@@ -30,11 +30,13 @@ public class Funcionarios {
     @NotBlank
     private String endereco;
 
-    public Funcionarios(String nomeCompleto, String funcao, Double salario, String telefone, String endereco) {
-        this.nomeCompleto = nomeCompleto;
-        this.funcao = funcao;
-        this.salario = salario;
-        this.telefone = telefone;
-        this.endereco = endereco;
+
+
+    public Funcionarios(FuncionariosRequest funcionariosRequest) {
+        this.nomeCompleto = funcionariosRequest.getNomeCompleto();
+        this.funcao = funcionariosRequest.getFuncao();
+        this.salario = funcionariosRequest.getSalario();
+        this.telefone = funcionariosRequest.getTelefone();
+        this.endereco = funcionariosRequest.getEndereco();
     }
 }
