@@ -1,5 +1,6 @@
 package br.com.f1rst.gestao_funcionarios.funcionarios.application.service;
 
+import br.com.f1rst.gestao_funcionarios.funcionarios.application.api.FuncionariosListResponse;
 import br.com.f1rst.gestao_funcionarios.funcionarios.application.api.FuncionariosRequest;
 import br.com.f1rst.gestao_funcionarios.funcionarios.application.api.FuncionariosResponse;
 import br.com.f1rst.gestao_funcionarios.funcionarios.application.repository.FuncionariosRepository;
@@ -7,6 +8,8 @@ import br.com.f1rst.gestao_funcionarios.funcionarios.domain.Funcionarios;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @Log4j2
@@ -23,4 +26,13 @@ public class FuncionariosApplicationService implements FuncionariosService {
                 .idFuncionarios(funcionarios.getIdFuncionarios())
                 .build();
     }
-}
+
+    @Override
+    public List<FuncionariosListResponse> buscaTodosFuncionario() {
+        log.info("[inicia] FuncionariosApplicationService - buscaTodosFuncionario");
+        log.info("[finaliza] FuncionariosApplicationService - buscaTodosFuncionario");
+        return List.of();
+    }
+
+
+    }
