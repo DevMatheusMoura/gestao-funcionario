@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Log4j2
 @RequiredArgsConstructor
@@ -18,5 +20,13 @@ public class FuncionariosInfraRepository implements FuncionariosRepository {
         log.info("[finaliza] FuncionariosInfraRepository - salva");
         return funcionarios;
     }
+
+    public List<Funcionarios> buscaTodosFuncionario() {
+        log.info("[inicia] FuncionariosInfraRepository - buscaTodosFuncionario");
+        List<Funcionarios> todosFuncionario = funcionariosSprintDataJPARepository.findAll();
+        log.info("[finaliza] FuncionariosInfraRepository - buscaTodosFuncionario");
+        return null;
+    }
 }
+
 
