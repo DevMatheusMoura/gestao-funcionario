@@ -10,6 +10,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Log4j2
@@ -30,10 +31,19 @@ public class FuncionariosApplicationService implements FuncionariosService {
     @Override
     public List<FuncionariosListResponse> buscaTodosFuncionario() {
         log.info("[inicia] FuncionariosApplicationService - buscaTodosFuncionario");
-        List<Funcionarios> funcionario = FuncionariosRepository.buscaTodosFuncionario();
+        List<Funcionarios> funcionario = funcionariosRepository.buscaTodosFuncionario();
         log.info("[finaliza] FuncionariosApplicationService - buscaTodosFuncionario");
         return FuncionariosListResponse.converte(funcionario);
     }
 
-
+    @Override
+    public void editaFuncionario(UUID idFuncionario, FuncionariosRequest funcionariosRequest) {
+        log.info("[inicia] FuncionariosApplicationService - editaFuncionario");
+        Funcionarios funcionarios = funcionariosRepository.buscaFuncionario(idFuncionario);
+        funcionarios.atualiza(funcionariosRequest);
+        funcionariosRepository.salva(funcionarios);
+        log.info("[finaliza] FuncionariosApplicationService - editaFuncionario");
     }
+
+
+}

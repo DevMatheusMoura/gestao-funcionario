@@ -39,4 +39,12 @@ public class Funcionarios {
         this.telefone = funcionariosRequest.getTelefone();
         this.endereco = funcionariosRequest.getEndereco();
     }
+
+    public void atualiza(FuncionariosRequest funcionariosRequest) {
+        this.nomeCompleto = funcionariosRequest.getNomeCompleto();
+        this.funcao = funcionariosRequest.getFuncao();
+        this.salario = funcionariosRequest.getSalario();
+        this.telefone = funcionariosRequest.getTelefone();
+        this.endereco = funcionariosRequest.getEndereco();
+    }
 }

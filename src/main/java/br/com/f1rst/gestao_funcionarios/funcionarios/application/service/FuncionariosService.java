@@ -5,8 +5,10 @@ import br.com.f1rst.gestao_funcionarios.funcionarios.application.api.Funcionario
 import br.com.f1rst.gestao_funcionarios.funcionarios.application.api.FuncionariosResponse;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface FuncionariosService {
     FuncionariosResponse criaFuncionarios(FuncionariosRequest funcionariosRequest);
     List<FuncionariosListResponse> buscaTodosFuncionario();
+    void editaFuncionario(UUID idFuncionario, FuncionariosRequest funcionariosRequest);
 }

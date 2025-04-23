@@ -7,12 +7,14 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 @Log4j2
 @RequiredArgsConstructor
 public class FuncionariosInfraRepository implements FuncionariosRepository {
     private final FuncionariosSprintDataJPARepository funcionariosSprintDataJPARepository;
+
     @Override
     public Funcionarios salva(Funcionarios funcionarios) {
         log.info("[inicia] FuncionariosInfraRepository - salva");
@@ -25,8 +27,16 @@ public class FuncionariosInfraRepository implements FuncionariosRepository {
         log.info("[inicia] FuncionariosInfraRepository - buscaTodosFuncionario");
         List<Funcionarios> todosFuncionario = funcionariosSprintDataJPARepository.findAll();
         log.info("[finaliza] FuncionariosInfraRepository - buscaTodosFuncionario");
-        return null;
+        return todosFuncionario;
+    }
+
+    @Override
+    public Funcionarios buscaFuncionario(UUID idFuncionario) {
+        log.info("[inicia] FuncionariosInfraRepository - buscaFuncionario");
+        Funcionarios funcionario = funcionariosSprintDataJPARepository.findById(idFuncionario).orElseThrow(()
+                -> new RuntimeException("Funcionario não encontrado"));
+        log.info("[finaliza] FuncionariosInfraRepository - buscaFuncionario");
+        return funcionario;
     }
 }
-
 
