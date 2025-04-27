@@ -22,6 +22,13 @@ public interface FuncionariosAPI {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void editaFuncionario(@PathVariable UUID idFuncionario, @RequestBody @Valid FuncionariosRequest funcionariosRequest);
 
+    @GetMapping ("/{idFuncionario}")
+    @ResponseStatus(code = HttpStatus.OK)
+    FuncionarioDetalhadoResponse getFuncionario(@PathVariable UUID idFuncionario);
 
+    @DeleteMapping ("/{idFuncionario}/deleta-funcionario")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deletaFuncionario(@PathVariable UUID idFuncionario);
 
 }
+

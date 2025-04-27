@@ -13,6 +13,7 @@ public interface FuncionariosRepository {
     Funcionarios salva(Funcionarios funcionarios);
     List<Funcionarios> buscaTodosFuncionario();
     Funcionarios buscaFuncionario(UUID idFuncionario);
+    void deleta(Funcionarios funcionario);
 }
 
 

@@ -2,6 +2,7 @@ package br.com.f1rst.gestao_funcionarios.funcionarios.domain;
 
 import br.com.f1rst.gestao_funcionarios.funcionarios.application.api.FuncionariosRequest;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -18,11 +19,12 @@ public class Funcionarios {
     @GeneratedValue(strategy =  GenerationType.AUTO)
     @Column(name = "id_funcionario", updatable = false, unique = true,nullable = false)
     private UUID idFuncionarios;
-    @NotBlank
+    @NotBlank(message = "Nome completo é obrigatório")
     private String nomeCompleto;
     @NotBlank
     private String funcao;
     @NotNull
+    @Min(message = "Salário deve ser maior que zero", value = 1)
     private Double salario;
     @NotBlank
     @Size(min = 11, max = 15)

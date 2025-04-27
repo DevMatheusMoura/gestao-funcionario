@@ -1,6 +1,7 @@
 package br.com.f1rst.gestao_funcionarios.funcionarios.application.api;
 
 import br.com.f1rst.gestao_funcionarios.funcionarios.application.service.FuncionariosService;
+import br.com.f1rst.gestao_funcionarios.funcionarios.domain.Funcionarios;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -41,5 +42,20 @@ public class FuncionariosController implements FuncionariosAPI {
         funcionariosService.editaFuncionario(idFuncionario, funcionariosRequest);
         log.info("[finaliza] FuncionariosController - editaFuncionario");
 
+    }
+
+    @Override
+    public FuncionarioDetalhadoResponse getFuncionario(UUID idFuncionario) {
+        log.info("[inicia] FuncionariosController - getFuncionarios");
+        FuncionarioDetalhadoResponse funcionario = funcionariosService.buscaFuncionario(idFuncionario);
+        log.info("[finaliza] FuncionariosController - getFuncionarios");
+        return funcionario;
+    }
+
+    @Override
+    public void deletaFuncionario(UUID idFuncionario) {
+        log.info("[inicia] FuncionariosController - deletaFuncionario");
+        funcionariosService.deletaFuncionario(idFuncionario);
+        log.info("[finaliza] FuncionariosController - deletaFuncionario");
     }
 }

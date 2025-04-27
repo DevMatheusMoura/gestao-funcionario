@@ -1,5 +1,6 @@
 package br.com.f1rst.gestao_funcionarios.funcionarios.application.service;
 
+import br.com.f1rst.gestao_funcionarios.funcionarios.application.api.FuncionarioDetalhadoResponse;
 import br.com.f1rst.gestao_funcionarios.funcionarios.application.api.FuncionariosListResponse;
 import br.com.f1rst.gestao_funcionarios.funcionarios.application.api.FuncionariosRequest;
 import br.com.f1rst.gestao_funcionarios.funcionarios.application.api.FuncionariosResponse;
@@ -43,6 +44,22 @@ public class FuncionariosApplicationService implements FuncionariosService {
         funcionarios.atualiza(funcionariosRequest);
         funcionariosRepository.salva(funcionarios);
         log.info("[finaliza] FuncionariosApplicationService - editaFuncionario");
+    }
+
+    @Override
+    public FuncionarioDetalhadoResponse buscaFuncionario(UUID idFuncionario) {
+        log.info("[inicia] FuncionariosApplicationService - buscaFuncionario");
+        Funcionarios funcionario = funcionariosRepository.buscaFuncionario(idFuncionario);
+        log.info("[Finaliza] FuncionariosApplicationService - buscaFuncionario");
+        return new FuncionarioDetalhadoResponse(funcionario);
+    }
+
+    @Override
+    public void deletaFuncionario(UUID idFuncionario) {
+        log.info("[inicia] FuncionariosApplicationService - deletaFuncionario");
+        Funcionarios funcionario = funcionariosRepository.buscaFuncionario(idFuncionario);
+        funcionariosRepository.deleta(funcionario);
+        log.info("[finaliza] FuncionariosApplicationService - deletaFuncionario");
     }
 
 

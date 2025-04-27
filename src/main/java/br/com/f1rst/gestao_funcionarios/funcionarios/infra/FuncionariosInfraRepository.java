@@ -38,5 +38,16 @@ public class FuncionariosInfraRepository implements FuncionariosRepository {
         log.info("[finaliza] FuncionariosInfraRepository - buscaFuncionario");
         return funcionario;
     }
+
+    @Override
+    public void deleta(Funcionarios funcionario) {
+        log.info("[inicia] FuncionariosInfraRepository - deleta");
+        funcionariosSprintDataJPARepository.delete(funcionario);
+        log.info("[finaliza] FuncionariosInfraRepository - deleta");
+
+    }
+
+
 }
+
 
