@@ -21,15 +21,13 @@ public class Funcionarios {
     private UUID idFuncionarios;
     @NotBlank(message = "Nome completo é obrigatório")
     private String nomeCompleto;
-    @NotBlank
+    @NotBlank(message = "Função é obrigatória")
     private String funcao;
-    @NotNull
-    @Min(message = "Salário deve ser maior que zero", value = 1)
+    @NotNull(message = "Salário é obrigatório")
     private Double salario;
-    @NotBlank
-    @Size(min = 11, max = 15)
+    @NotBlank(message = "Telefone é obrigatório")
     private String telefone;
-    @NotBlank
+    @NotBlank(message = "Endereço é obrigatório")
     private String endereco;
 
 

@@ -14,6 +14,7 @@ public class FuncionariosListResponse {
     private UUID idFuncionarios;
     private String nomeCompleto;
     private String funcao;
+    private String telefone;
 
     public static List<FuncionariosListResponse> converte(List<Funcionarios> funcionario) {
         return funcionario.stream()
@@ -25,6 +26,7 @@ public class FuncionariosListResponse {
         this.idFuncionarios = funcionarios.getIdFuncionarios();
         this.nomeCompleto = funcionarios.getNomeCompleto();
         this.funcao = funcionarios.getFuncao();
+        this.telefone = funcionarios.getTelefone();
     }
 }
 
